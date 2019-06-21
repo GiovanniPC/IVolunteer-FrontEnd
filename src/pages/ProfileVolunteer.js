@@ -64,7 +64,6 @@ class ProfileVolunteer extends React.Component {
      data['volunteer'] = this.state.data
      try{
       const res = await api.put(`/my-details`, {data});
-      console.log(res)
       this.setState({ edit: false })
      }catch (err) {
        console.log(err)

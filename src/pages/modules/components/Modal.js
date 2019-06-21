@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import api from '../../../services/api';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import FormButton from '../../modules/form/FormButton';
@@ -40,12 +43,44 @@ const styles = theme => ({
 
 class SimpleModal extends React.Component {
 
+  state={
+    start:new Date(),
+    end:new Date(),
+    title:'',
+    description:'',
+  }
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value })
+  }
+
+  createEvent = async () => {
+    const { start, end, description, title } = this.state;
+  if( !start || !end || !description|| !title ) {
+    this.setState({ error: "Preencha todos os campos!" })
+    }
+    else{
+      const data = this.state
+      try{
+        await api.post(`/events`, {data});
+        this.props.loadEvents();
+        this.props.handleClose();
+      }catch (err) {
+        console.log(err)
+        this.setState({
+          error: "Já existe um evento com este nome."
+        })
+      }
+    }
+  }
   render() {
     const { classes } = this.props;
     const { name, email, profession, phone, responsavel, address, area_atuacao } = this.props;
 
     return (
+      
       <div>
+        <If teste={this.props.modal === 'profile'}>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -116,11 +151,98 @@ class SimpleModal extends React.Component {
             <SimpleModalWrapped />
           </AppForm>
         </Modal>
+        </If>
+        <If teste={this.props.modal === 'events'}>
+        <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={this.props.open}
+            onClose={this.props.handleClose}
+          >
+          <AppForm style={getModalStyle()} className={classes.paper}>
+            <Typography variant="h4" gutterBottom marked="center" align="center">
+                Criar evento
+              </Typography>
+              <Typography variant="h5" gutterBottom marked="center" align="center">
+              {this.state.error}
+            </Typography>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="start"
+                  label="Data de inicio"
+                  type="date"
+                  className={classes.fields}
+                  value={this.state.start}
+                  onChange={this.handleChange('start')}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="end"
+                  label="Data de fim"
+                  type="date"
+                  className={classes.fields}
+                  value={this.state.end}
+                  onChange={this.handleChange('end')}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </Grid>
+            </Grid>
+              <TextField
+                required
+                fullWidth
+                id="title"
+                label="Titulo"
+                className={classes.fields}
+                value={this.state.title}
+                onChange={this.handleChange('title')}
+                margin="normal"
+                variant="outlined"
+              />
+              <TextField
+                required
+                id="outlined-dense-multiline"
+                label="Descrição"
+                fullWidth
+                value={ this.state.description }
+                className={classes.fields}
+                onChange={this.handleChange('description')}
+                margin="dense"
+                variant="outlined"
+                multiline
+                rowsMax="10"
+              />
+              <FormButton
+              className={classes.button}
+              color="secondary"
+              fullWidth
+              onClick={this.createEvent}
+              >
+              {'Criar'}
+            </FormButton>
+            <FormButton
+              className={classes.button}
+              color="secondary"
+              fullWidth
+              onClick={this.props.handleClose}
+              >
+              {'Cancelar'}
+            </FormButton>
+              <SimpleModalWrapped />
+          </AppForm>
+        </Modal>
+        </If>
       </div>
-    );
-  }
-}
-
+    )};
+    }
 SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };

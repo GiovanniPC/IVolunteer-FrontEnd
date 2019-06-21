@@ -206,6 +206,7 @@ this.setState({ open: false });
           profession={profession_id}
           responsavel={responsavel}
           areas_conta={this.state.areas_conta}
+          modal='profile'
         />
       </Segment>
     )

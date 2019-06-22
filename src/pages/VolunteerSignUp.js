@@ -1,9 +1,9 @@
 import withRoot from './modules/withRoot';
-import { withRouter } from 'react-router-dom';
 // --- Post bootstrap -----
 import React from 'react';
 import PropTypes from 'prop-types';
 import api from '../services/api';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -39,14 +39,13 @@ class VolunteerSignUp extends React.Component {
     email:'',
     username:'',
     password:'',
-    birth:'',
-    city:"",
-    state:"",
+    birth: new Date(),
+    city:'',
+    state:'',
     profession_id:'',
     address:'',
     phone:'',
     error:'',
-    error_area:'',
     saude:false,
     meio_ambiente:false,
     assistencia_social:false,
@@ -56,14 +55,6 @@ class VolunteerSignUp extends React.Component {
     habitacao:false
   };
 
-  handleSubmit(){
-    if(this.props.userData){
-      this.handleUpdate()
-    }
-    else{
-      this.handleSignUp()
-    }
-  }
   handleSignUp = async e => {
     e.preventDefault();
    const { username, password, name, email, city, address,phone } = this.state;
@@ -74,13 +65,21 @@ class VolunteerSignUp extends React.Component {
       cultura, dev_defesa_direito,educacao_pesquisa, habitacao } = this.state;
     if( !saude && !meio_ambiente && !assistencia_social && 
     !cultura && !dev_defesa_direito && !educacao_pesquisa && !habitacao ) {
-      this.setState({ error_area: "Selecione pelo menos uma area!" })
+      this.setState({ error: "Selecione pelo menos uma area!" })
     }       
    else{
      const data = this.state
+     console.log(data)
      try{
-      await api.post(`/signup/volunteer`, {data});
-      this.props.history.push('/sign-in')
+      const res = await api.post(`/signup/volunteer`, {data});
+      console.log(res)
+      if(res.status === 201 || res.status === 200){
+        console.log('redirect')
+        this.props.goToSign()
+      }
+      if(res.status === 202){
+        this.setState({error: res.data.error})
+      }
      }catch (err) {
        console.log(err)
        this.setState({
@@ -101,7 +100,7 @@ class VolunteerSignUp extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <form onSubmit={this.handleSubmit} className={classes.form}>
+      <div className={classes.form}>
         <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
                 <TextField
@@ -284,15 +283,18 @@ class VolunteerSignUp extends React.Component {
             label="Cultura"
           />
         </FormGroup>
-        {this.state.error}
+        <Typography variant="h5" align="center" style={{color: '#ec407a'}}>
+          {this.state.error}
+      </Typography>
         <FormButton
+          onClick={this.handleSignUp}
           className={classes.button}
           color="secondary"
           fullWidth
         >
           {'Cadastrar'}
         </FormButton>
-      </form>
+      </div>
     )}
 }
 
@@ -303,5 +305,4 @@ VolunteerSignUp.propTypes = {
 export default compose(
   withRoot,
   withStyles(styles),
-  withRouter,
 )(VolunteerSignUp);

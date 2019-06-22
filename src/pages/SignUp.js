@@ -1,6 +1,7 @@
 import withRoot from './modules/withRoot';
 import React from 'react';
 import Link from '@material-ui/core/Link';
+import { withRouter } from 'react-router-dom';
 import Typography from './modules/components/Typography';
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
@@ -23,6 +24,9 @@ class SignUp extends React.Component {
     this.setState({ tipo: event.target.value })
   }
 
+  sendToSignIn= () => {
+    this.props.history.push('/')
+  }
   render() {
     return (
       <React.Fragment>
@@ -64,10 +68,10 @@ class SignUp extends React.Component {
           </React.Fragment>
           </If>
           <If teste={this.state.tipo === "ong" }>
-          <OngSignUp userData={this.props.userData} />
+          <OngSignUp userData={this.props.userData} goToSign={this.sendToSignIn}/>
           </If>
           <If teste={this.state.tipo === "volunteer" }>
-          <VolunteerSignUp userData={this.props.userData} />
+          <VolunteerSignUp userData={this.props.userData} goToSign={this.sendToSignIn}/>
           </If>
         </AppForm>
         <AppFooter />
@@ -77,5 +81,6 @@ class SignUp extends React.Component {
 }
 
 export default compose(
+  withRouter,
   withRoot,
 )(SignUp);

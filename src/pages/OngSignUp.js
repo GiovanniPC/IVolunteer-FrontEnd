@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import FormButton from './modules/form/FormButton';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -32,20 +33,20 @@ const styles = theme => ({
 
 class OngSignUp extends React.Component {
   state = {
-    name:"",
-    username:"",
-    password:"",
-    cnpj:"",
-    email:"",
-    data_abertura:"",
-    city:"",
-    state:"",
-    responsavel:"",
-    address:"",
-    phone:"",
-    error:"",
-    area_atuacao:"",
-    descricao:""
+    name:'',
+    username:'',
+    password:'',
+    cnpj:'',
+    email:'',
+    data_abertura: new Date(),
+    city:'',
+    state:'',
+    responsavel:'',
+    address:'',
+    phone:'',
+    error:'',
+    area_atuacao:'',
+    descricao:''
     };
 
     handleChange = name => event => {
@@ -56,17 +57,23 @@ class OngSignUp extends React.Component {
       e.preventDefault();
      const { username, password, name, cnpj, data_abertura, responsavel,
             area_atuacao, email, city, address,phone } = this.state;
-      if( !username || !password || !name || cnpj|| data_abertura || responsavel ||
-        area_atuacao||  !email || !city || !address || !phone ) {
+      if( !username || !password || !name || !cnpj|| !data_abertura || !responsavel ||
+        !area_atuacao||  !email || !city || !address || !phone ) {
         this.setState({ error: "Preencha todos os campos!" })
       }     
      else{
        const data = this.state
        try{
-        await api.post(`/signup/ong`, {data});
-        this.props.history.push('/sign-in')
-       }catch (err) {
-         console.log(err)
+        const res = await api.post(`/signup/ong`, {data});
+        if(res.status === 201){
+          this.props.goToSign()
+        }
+        if(res.status === 202){
+          console.log(res)
+          this.setState({error: res.data.error})
+        }
+       }catch (res) {
+         console.log(res)
          this.setState({
            error: "Houve um error com o cadastro, favor verifique suas credenciais."
          })
@@ -76,7 +83,7 @@ class OngSignUp extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <form onSubmit={this.handleSignUp} className={classes.form}>
+      <div className={classes.form}>
         <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
                 <TextField
@@ -186,7 +193,7 @@ class OngSignUp extends React.Component {
             onChange={this.handleChange('area_atuacao')}
             >
             {Object.keys(atuacao).map(option => (
-            <MenuItem key={option} value={option}>
+            <MenuItem key={option} value={atuacao[option]}>
                 {atuacao[option]}
             </MenuItem>
             ))}
@@ -231,7 +238,7 @@ class OngSignUp extends React.Component {
             onChange={this.handleChange('state')}
             >
             {Object.keys(states).map(option => (
-            <MenuItem key={option} value={option}>
+            <MenuItem key={option} value={states[option]}>
                 {states[option]}
             </MenuItem>
             ))}
@@ -262,14 +269,18 @@ class OngSignUp extends React.Component {
         multiline
         rowsMax="10"
       />
+      <Typography variant="h5" align="center" style={{color: '#ec407a'}}>
+          {this.state.error}
+      </Typography>
       <FormButton
         className={classes.button}
         color="secondary"
         fullWidth
+        onClick={this.handleSignUp}
       >
         {'Cadastrar'}
       </FormButton>
-      </form>
+      </div>
     )}
 }
 

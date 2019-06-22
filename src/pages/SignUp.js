@@ -25,7 +25,7 @@ class SignUp extends React.Component {
   }
 
   sendToSignIn= () => {
-    this.props.history.push('/')
+    this.props.history.push('/sign-in/')
   }
   render() {
     return (

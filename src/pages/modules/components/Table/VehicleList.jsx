@@ -118,7 +118,9 @@ getProfileData = async (id) =>{
       if('volunteer' in response.data){
         const areas=[]
         Object.keys(areasformat).map(key  => {
-          if(response.data[key]) areas.push(areasformat[key])
+          if(response.data[key]) {
+            areas.push(areasformat[key])
+          }
         });
          this.setState({detalhes_conta: response.data.volunteer, areas_conta: areas});
       }

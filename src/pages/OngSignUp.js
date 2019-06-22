@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import If from '../utils/if';
 import compose from '../utils/compose';
-import { atuacao, states } from '../utils/variables';
+import { areasformat, states } from '../utils/variables';
 
 
 
@@ -65,7 +65,8 @@ class OngSignUp extends React.Component {
        const data = this.state
        try{
         const res = await api.post(`/signup/ong`, {data});
-        if(res.status === 201){
+        console.log(res)
+        if(res.status === 201 || res.status === 200){
           this.props.goToSign()
         }
         if(res.status === 202){
@@ -192,9 +193,9 @@ class OngSignUp extends React.Component {
             value={ this.state.area_atuacao }
             onChange={this.handleChange('area_atuacao')}
             >
-            {Object.keys(atuacao).map(option => (
-            <MenuItem key={option} value={atuacao[option]}>
-                {atuacao[option]}
+            {Object.keys(areasformat).map(option => (
+            <MenuItem key={option} value={option}>
+                {areasformat[option]}
             </MenuItem>
             ))}
         </TextField>

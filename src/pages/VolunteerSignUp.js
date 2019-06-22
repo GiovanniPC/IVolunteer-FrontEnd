@@ -1,4 +1,5 @@
 import withRoot from './modules/withRoot';
+import { withRouter } from 'react-router-dom';
 // --- Post bootstrap -----
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -66,15 +67,12 @@ class VolunteerSignUp extends React.Component {
     if( !saude && !meio_ambiente && !assistencia_social && 
     !cultura && !dev_defesa_direito && !educacao_pesquisa && !habitacao ) {
       this.setState({ error: "Selecione pelo menos uma area!" })
-    }       
+    }
    else{
      const data = this.state
-     console.log(data)
      try{
       const res = await api.post(`/signup/volunteer`, {data});
-      console.log(res)
       if(res.status === 201 || res.status === 200){
-        console.log('redirect')
         this.props.goToSign()
       }
       if(res.status === 202){
@@ -303,6 +301,7 @@ VolunteerSignUp.propTypes = {
 };
 
 export default compose(
+  withRouter,
   withRoot,
   withStyles(styles),
 )(VolunteerSignUp);

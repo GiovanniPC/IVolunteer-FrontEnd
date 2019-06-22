@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '../components/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
@@ -11,14 +12,16 @@ import graph from '../../../static/themes/onepirate/productValues2.svg';
 const styles = theme => ({
   root: {
     display: 'flex',
-    overflow: 'hidden',
     backgroundColor: theme.palette.secondary.light,
+    overflow: 'hidden',
   },
   container: {
-    marginTop: theme.spacing(15),
-    marginBottom: theme.spacing(30),
-    display: 'flex',
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(10),
     position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   item: {
     display: 'flex',
@@ -28,10 +31,11 @@ const styles = theme => ({
   },
   image: {
     height: 55,
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   title: {
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(14),
   },
   curvyLines: {
     pointerEvents: 'none',
@@ -51,6 +55,9 @@ function ProductValues(props) {
           className={classes.curvyLines}
           alt="curvy lines"
         />
+        <Typography variant="h4" marked="center" className={classes.title} component="h2">
+          Agenda de eventos
+        </Typography>
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
@@ -60,11 +67,11 @@ function ProductValues(props) {
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+              Cadastre
               </Typography>
               <Typography variant="h5">
-                {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
-                {', go for a mini-vacation just a few subway stops away from your home.'}
+                {'Você que é ONG pode marcar em nossa agenda todos seus eventos'}
+                {', com isso todos poderam ver e se programar para participar também.'}
               </Typography>
             </div>
           </Grid>
@@ -76,11 +83,10 @@ function ProductValues(props) {
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                Veja
               </Typography>
               <Typography variant="h5">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
+                {'Acessando a agenda é possível ver todos os eventos que as ONGs estão programando '}
               </Typography>
             </div>
           </Grid>
@@ -92,15 +98,24 @@ function ProductValues(props) {
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Voluntariar-se
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'Você voluntário cadastrado além de ver os eventos, pode se voluntariar em qualquer um '}
               </Typography>
             </div>
           </Grid>
         </Grid>
+        <Button
+        color="secondary"
+        variant="contained"
+        size="large"
+        className={classes.button}
+        component="a"
+        href="/Agenda/"
+      >
+        Agenda
+      </Button>
       </Container>
     </section>
   );

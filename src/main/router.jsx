@@ -6,7 +6,8 @@ import SignUp from '../pages/SignUp';
 import About from '../pages/About';
 import ListCategory from '../pages/ListCategory';
 import Profile from '../pages/Profile';
-import Calendar from '../pages/novo';
+import Agenda from '../pages/Agenda';
+import Logout from '../pages/Logout';
 import { isAuthenticated } from '../services/auth';
 import history  from './history';
 
@@ -28,9 +29,10 @@ export default () => (
             <Route path='/' exact={true} component={Home} />
             <Route path='/sign-in' component={SignIn} />
             <Route path='/sign-up' component={SignUp} />
+            <Route path='/logout' component={Logout} />            
             <Route path='/about' component={About} />
             <Route path='/list' component={ListCategory} />
-            <Route path='/teste' component={Calendar} />
+            <Route path='/agenda' component={Agenda} />
             <PrivateRouter path='/profile' component={Profile}/>
             <Redirect from='*' to='/' />
         </Switch>

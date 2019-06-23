@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
@@ -12,7 +13,7 @@ import AppForm from './modules/views/AppForm';
 import FormButton from './modules/form/FormButton';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { atuacao, states } from '../utils/variables';
+import { areasformat, states } from '../utils/variables';
 import If from '../utils/if';
 import compose from '../utils/compose';
 const styles = theme => ({
@@ -22,6 +23,9 @@ const styles = theme => ({
   button: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
+    '&:hover':{
+      color: '#ffff',
+    }
   },
   feedback: {
     marginTop: theme.spacing(2),
@@ -124,7 +128,7 @@ class ProfileOng extends React.Component {
                     Data de abertura
                   </Typography>
                   <Typography variant="h5">
-                    {this.props.data.data_abertura}
+                    {moment(this.props.data.data_abertura).format('DD/MM/YYYY')}
                   </Typography>
                   </Grid>
                 </Grid>
@@ -134,7 +138,7 @@ class ProfileOng extends React.Component {
                     Area de atuação
                   </Typography>
                   <Typography variant="h5">
-                    {atuacao[this.props.data.area_atuacao]}
+                    {areasformat[this.props.data.area_atuacao]}
                   </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -288,9 +292,9 @@ class ProfileOng extends React.Component {
             value={ this.state.data.area_atuacao }
             onChange={this.handleChange('area_atuacao')}
             >
-            {Object.keys(atuacao).map(option => (
+            {Object.keys(areasformat).map(option => (
             <MenuItem key={option} value={option}>
-                {atuacao[option]}
+                {areasformat[option]}
             </MenuItem>
             ))}
         </TextField>

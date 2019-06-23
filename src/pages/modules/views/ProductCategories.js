@@ -5,6 +5,13 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
 import { Link } from 'react-router-dom';
+import meioAmbiente from '../../../static/images/meioAmbiente.jpg'
+import direito from '../../../static/images/direito.jpg'
+import habitacao from '../../../static/images/habitacao.jpg'
+import pesquisa from '../../../static/images/pesquisa.jpg'
+import cultura from '../../../static/images/cultura.jpg'
+import assistencia from '../../../static/images/assistencia.jpg'
+import saude from '../../../static/images/saude.png'
 
 const styles = theme => ({
   root: {
@@ -90,49 +97,49 @@ function ProductCategories(props) {
   const images = [
     {
       url:
-        'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400&q=80',
+        meioAmbiente,
       title: 'Meio Ambiente',
       width: '50%',
       name: 'meio-ambiente',
      },
     {
       url:
-        'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
+      assistencia,
       title: 'Assistência social',
       width: '50%',
       name: 'assistencia-social',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400&q=80',
+        cultura,
       title: 'Cultura',
       width: '38%',
       name:'cultura',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1523309996740-d5315f9cc28b?auto=format&fit=crop&w=400&q=80',
+        saude,
       title: 'Saúde',
       width: '38%',
       name:'saude',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80',
+        habitacao,
       title: 'Habitação',
       width: '24%',
       name:'habitacao'
     },
     {
       url:
-        'https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=400&q=80',
+        direito,
       title: 'Desenvolvimento e defesa de direitos',
       width: '50%',
       name:'defesa-direito',
     },
     {
       url:
-        'https://images.unsplash.com/photo-1518136247453-74e7b5265980?auto=format&fit=crop&w=400&q=80',
+        pesquisa,
       title: 'Educação e Pesquisa',
       width: '50%',
       name: 'educacao-pesquisa',

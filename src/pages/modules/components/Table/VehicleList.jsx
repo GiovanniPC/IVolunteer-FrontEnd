@@ -3,6 +3,8 @@ import {Segment} from 'semantic-ui-react';
 import { areasformat } from '../../../../utils/variables';
 import {VehicleTable} from './VehicleTable.jsx';
 import Modal from '../../components/Modal';
+import Typography from '@material-ui/core/Typography';
+
 import api from '../../../../services/api';
 
 const queryParams = ['_limit','_order','_sort','q','_page'];
@@ -23,8 +25,9 @@ export default class VehicleList extends React.Component {
       area:'',
       detalhes_conta:'',
       areas_conta:'',
-      open: false
-     };
+      open: false,
+      list:'',
+    };
     this.loadData = this.loadData.bind(this);
     this.onChangeLimit = this.onChangeLimit.bind(this);
     this.onSubmitFilter = this.onSubmitFilter.bind(this);
@@ -91,6 +94,7 @@ export default class VehicleList extends React.Component {
 
   handleChange = async (event) => {
     const request = await api.get(`/${event.target.value}`)
+    this.props.change(event.target.value)
     this.setState({
       area: event.target.value,
       data: request.data
@@ -134,9 +138,20 @@ getProfileData = async (id) =>{
   };
 
 handleOpen = () => {
-  this.setState({ open: true });
+  const res = this.AreaList(this.state.areas_conta);
+  this.setState({ open: true, list: res});
 };
-
+AreaList(props) {
+  const numbers = props;
+  const listItems = numbers.map((number) =>
+    <Typography key={number.toString()} variant="h5">
+      {number}
+    </Typography>
+  );
+  return (
+    listItems
+  );
+}
 handleClose = () => {
 this.setState({ open: false });
 };
@@ -207,7 +222,7 @@ this.setState({ open: false });
           area_atuacao={area_atuacao}
           profession={profession_id}
           responsavel={responsavel}
-          areas_conta={this.state.areas_conta}
+          areas_conta={this.state.list}
           modal='profile'
         />
       </Segment>

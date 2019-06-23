@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import api from '../../../services/api';
+import moment from 'moment';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import FormButton from '../../modules/form/FormButton';
@@ -100,7 +101,7 @@ class EnventModal extends React.Component {
                 Data Inicio
               </Typography>
               <Typography variant="h5" align="center">
-                  {start}
+                  {moment(start).format('DD/MM/YYYY')}
               </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -108,7 +109,7 @@ class EnventModal extends React.Component {
                 Data Fim
               </Typography>
               <Typography variant="h5" align="center">
-                  {end}
+                  {moment(end).format('DD/MM/YYYY')}
               </Typography>
               </Grid>
             </Grid>

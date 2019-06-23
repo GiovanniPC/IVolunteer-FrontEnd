@@ -236,7 +236,7 @@ class VolunteerSignUp extends React.Component {
             onChange={this.handleChange('state')}
             >
             {Object.keys(states).map(option => (
-            <MenuItem key={option} value={option}>
+            <MenuItem key={option} value={states[option]}>
                 {states[option]}
             </MenuItem>
             ))}

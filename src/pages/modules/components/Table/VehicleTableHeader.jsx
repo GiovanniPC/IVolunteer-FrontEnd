@@ -29,10 +29,10 @@ export function VehicleTableHeader(props) {
           </FormControl>
         </Table.HeaderCell>
         <Table.HeaderCell width={3} sorted = {props.column === 'name' ? props.direction : null } onClick={() => props.handleSort('name')}>Nome</Table.HeaderCell>        
-        <Table.HeaderCell width={2} sorted = {props.column === 'model' ? props.direction : null } onClick={() => props.handleSort('city')}>Cidade</Table.HeaderCell>
-        <Table.HeaderCell width={1} sorted = {props.column === 'year' ? props.direction : null } onClick={() => props.handleSort('state')}>Estato</Table.HeaderCell>
-        <Table.HeaderCell width={1} sorted = {props.column === 'package' ? props.direction : null } onClick={() => props.handleSort('email')}>Email</Table.HeaderCell>
-        <Table.HeaderCell width={1} sorted = {props.column === 'favorite' ? props.direction : null } onClick={() => props.handleSort('favorite')}>Ver</Table.HeaderCell>
+        <Table.HeaderCell width={2} sorted = {props.column === 'city' ? props.direction : null } onClick={() => props.handleSort('city')}>Cidade</Table.HeaderCell>
+        <Table.HeaderCell width={1} sorted = {props.column === 'state' ? props.direction : null } onClick={() => props.handleSort('state')}>Estato</Table.HeaderCell>
+        <Table.HeaderCell width={1} >Email</Table.HeaderCell>
+        <Table.HeaderCell width={1} >Ver</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
   )

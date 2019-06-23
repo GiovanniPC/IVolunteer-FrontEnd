@@ -76,7 +76,6 @@ class SimpleModal extends React.Component {
   render() {
     const { classes } = this.props;
     const { name, email, profession, phone, responsavel, address, area_atuacao } = this.props;
-
     return (
       
       <div>
@@ -134,7 +133,7 @@ class SimpleModal extends React.Component {
             <Typography variant="h5">
                 {address}
             </Typography>
-            <If teste={this.props.area_atuacao}>
+            <If teste={!this.props.area_atuacao}>
             <Typography variant="h6" className={classes.title}>
               Áreas de interesse
             </Typography>

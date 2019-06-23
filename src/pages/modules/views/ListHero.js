@@ -5,8 +5,11 @@ import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import { isAuthenticated } from '../../../services/auth';
-import backgroundImage from   '../../../static/images/about.jpg'
+import { images } from '../../../utils/variables';
 import If from '../../../utils/if';
+
+const backgroundImage =
+'https://www.crossculture.com/wp-content/uploads/2017/10/Stereotypes.jpg';
 
 const styles = theme => ({
   background: {
@@ -31,13 +34,15 @@ const styles = theme => ({
 
 function ProductHero(props) {
   const { classes } = props;
+  const { title } = props.title.title
+  console.log(props)
 
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Sobre nós
+        {props.title.title}
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
         Ser voluntário é mais do que se imagina, é se dedicar a ajudar sem esperar nada em troca.

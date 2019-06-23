@@ -37,6 +37,12 @@ const styles = theme => ({
   title: {
     marginBottom: theme.spacing(14),
   },
+  button: {
+    '&:hover':{
+      backgroundColor:theme.palette.secondary.dark,
+      color: '#ffff'
+    },
+  },
   curvyLines: {
     pointerEvents: 'none',
     position: 'absolute',

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import api from '../services/api';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from './modules/components/Typography';
@@ -26,6 +27,9 @@ const styles = theme => ({
   button: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
+    '&:hover':{
+      color: '#ffff',
+    }
   },
   feedback: {
     marginTop: theme.spacing(2),
@@ -58,6 +62,9 @@ class ProfileVolunteer extends React.Component {
     this.setState({edit: true, data: this.props.data, areas: this.props.areas})
   }
 
+  handleCancel = () => {
+    this.setState({edit: false})
+  }
   handleUpdate = async e => {
     e.preventDefault();
      const data = this.state.areas
@@ -68,7 +75,7 @@ class ProfileVolunteer extends React.Component {
      }catch (err) {
        console.log(err)
        this.setState({
-         error: "Houve um error com o cadastro, favor verifique suas credenciais."
+         error: "Houve um error com a atualização, favor verifique suas credenciais."
        })
      }
    }
@@ -108,7 +115,7 @@ class ProfileVolunteer extends React.Component {
                     Data de nascimento
                   </Typography>
                   <Typography variant="h5">
-                    {this.props.data.birth}
+                    {moment(this.props.data.birth).format('DD/MM/YYYY')}
                   </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -343,13 +350,22 @@ class ProfileVolunteer extends React.Component {
             label="Cultura"
           />
         </FormGroup>
-        {this.state.error}
+        <Typography variant="h5" align="center" style={{color: '#ec407a'}}>
+          {this.state.error}
+        </Typography>
         <FormButton
           className={classes.button}
           color="secondary"
           fullWidth
         >
           {'Atualizar'}
+        </FormButton>
+        <FormButton
+          className={classes.button}
+          color="secondary"
+          fullWidth
+        >
+          {'Cancelar'}
         </FormButton>
       </form>
           </React.Fragment>

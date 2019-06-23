@@ -1,10 +1,10 @@
 export const areasformat = {
     "saude":"Saude.", 
-    "meio-ambiente":"Meio Ambiente.", 
-    "assistencia-social":"Assistencia Social.", 
+    "meio_ambiente":"Meio Ambiente.", 
+    "assistencia_social":"Assistencia Social.", 
     "cultura":"Cultura.", 
-    "defesa-direito":"Desenvolvimento e Defesa dos Direitos.", 
-    "educacao-pesquisa":"Educação e Pesquisa.", 
+    "dev_defesa_direito":"Desenvolvimento e Defesa dos Direitos.", 
+    "educacao_pesquisa":"Educação e Pesquisa.", 
     "habitacao":"Habitação."}
 
 export const atuacao = [
@@ -16,6 +16,43 @@ export const atuacao = [
     "Educação e Pesquisa",
     "Habitação"
 ]
+export const images = {
+    'meio-ambiente':{
+      url:
+        'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400&q=80',
+      title: 'Meio Ambiente',
+     },
+    'assistencia-social':{
+      url:
+        'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
+      title: 'Assistência social',
+    },
+    'cultura':{
+      url:
+        'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400&q=80',
+      title: 'Cultura',
+    },
+    'saude':{
+      url:
+        'https://images.unsplash.com/photo-1523309996740-d5315f9cc28b?auto=format&fit=crop&w=400&q=80',
+      title: 'Saúde',
+    },
+    'habitacao':{
+      url:
+        'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80',
+      title: 'Habitação',
+    },
+    'defesa-direito':{
+      url:
+        'https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=400&q=80',
+      title: 'Desenvolvimento e defesa de direitos',
+    },
+    'educacao-pesquisa':{
+      url:
+        'https://images.unsplash.com/photo-1518136247453-74e7b5265980?auto=format&fit=crop&w=400&q=80',
+      title: 'Educação e Pesquisa',
+    },
+};
 export const jobs ={
 "1":"Administrador de Banco de Dados",
 "2":"Açougueiro",

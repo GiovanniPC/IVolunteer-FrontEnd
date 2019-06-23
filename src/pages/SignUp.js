@@ -17,7 +17,7 @@ import VolunteerSignUp from './VolunteerSignUp';
 
 class SignUp extends React.Component {
   state = {
-    tipo:''
+    tipo:'ong'
   };
 
   handleChange = event =>{

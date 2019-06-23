@@ -41,6 +41,11 @@ const styles = theme => ({
   button:{
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
+    color:'#ffffff',
+    backgroundColor: '#616161',
+    '&:hover':{
+      backgroundColor:'#000000',
+    }
   },
   buttonCancel: {
     marginTop: theme.spacing(3),

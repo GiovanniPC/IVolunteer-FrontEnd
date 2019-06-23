@@ -126,9 +126,10 @@ getProfileData = async (id) =>{
             areas.push(areasformat[key])
           }
         });
-         this.setState({detalhes_conta: response.data.volunteer, areas_conta: areas});
+        const res = this.AreaList(areas);
+         this.setState({detalhes_conta: response.data.volunteer, list: res});
       }
-      else{
+      if('data_abertura' in response.data){
          this.setState({detalhes_conta: response.data})
         }
       this.handleOpen()
@@ -138,8 +139,7 @@ getProfileData = async (id) =>{
   };
 
 handleOpen = () => {
-  const res = this.AreaList(this.state.areas_conta);
-  this.setState({ open: true, list: res});
+  this.setState({ open: true});
 };
 AreaList(props) {
   const numbers = props;

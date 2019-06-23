@@ -31,6 +31,9 @@ const styles = theme => ({
   button: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
+    '&:hover':{
+      color:'#ffffff',
+    }
   },
   feedback: {
     marginTop: theme.spacing(2),

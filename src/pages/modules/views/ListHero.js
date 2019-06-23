@@ -18,6 +18,9 @@ const styles = theme => ({
   },
   button: {
     minWidth: 200,
+    '&:hover':{
+      color:'#ffffff',
+    }
   },
   h5: {
     marginBottom: theme.spacing(4),

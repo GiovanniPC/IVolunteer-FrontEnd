@@ -5,8 +5,10 @@ import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 import { isAuthenticated } from '../../../services/auth';
-import backgroundImage from   '../../../static/images/about.jpg'
 import If from '../../../utils/if';
+
+const backgroundImage =
+'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/about.jpg?alt=media&token=afadca31-852f-4b29-a1c3-e67221d107a7';
 
 const styles = theme => ({
   background: {

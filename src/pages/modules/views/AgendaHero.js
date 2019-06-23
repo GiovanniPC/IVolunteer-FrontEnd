@@ -33,18 +33,17 @@ const styles = theme => ({
 
 function ProductHero(props) {
   const { classes } = props;
-  const { title } = props.title.title
-  console.log(props)
 
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        {props.title.title}
+        Agenda
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-      Cada pequeno esforço voluntário, quando é feito com amor, transforma qualquer coisa, até mesmo a mais difícil.      </Typography>
+        Sempre temos algum tempinho livre para ajudar alguém, é só querer que a gente acha.
+      </Typography>
       <If teste={!isAuthenticated()}>
       <Button
         color="secondary"

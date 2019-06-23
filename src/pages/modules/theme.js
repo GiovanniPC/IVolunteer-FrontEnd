@@ -24,13 +24,16 @@ const rawTheme = createMuiTheme({
     },
     error: {
       xLight: red[50],
-      main: red[500],
+      main: '#ec407a',
       dark: red[700],
     },
     success: {
       xLight: green[50],
       dark: green[700],
     },
+    main:{
+      black: '#000000'
+    }
   },
   typography: {
     fontFamily: "'Work Sans', sans-serif",

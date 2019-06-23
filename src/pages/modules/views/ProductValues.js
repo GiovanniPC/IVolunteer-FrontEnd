@@ -5,9 +5,9 @@ import Button from '../components/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
-import clock from '../../../static/themes/onepirate/productValues3.svg';
-import suitCase from '../../../static/themes/onepirate/productValues1.svg';
-import graph from '../../../static/themes/onepirate/productValues2.svg';
+import clock from '../../../static/icons/volunteer.svg';
+import suitCase from '../../../static/icons/notes.svg';
+import graph from '../../../static/icons/binoculars.svg';
 
 const styles = theme => ({
   root: {

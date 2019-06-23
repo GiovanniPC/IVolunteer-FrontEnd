@@ -27,6 +27,15 @@ const styles = theme => ({
       color: '#ffff',
     }
   },
+  buttonCancel: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    color:'#ffffff',
+    backgroundColor: '#616161',
+    '&:hover':{
+      backgroundColor:'#000000',
+    }
+  },
   feedback: {
     marginTop: theme.spacing(2),
   },
@@ -54,6 +63,10 @@ class ProfileOng extends React.Component {
     newValue[name] = event.target.value
     this.setState({ data: newValue });
   };
+
+  handleCancel = () => {
+    this.setState({edit: false})
+  }
 
   handleUpdate = async e => {
     e.preventDefault();
@@ -376,6 +389,14 @@ class ProfileOng extends React.Component {
       >
         {'Atualizar'}
       </FormButton>
+      <FormButton
+          className={classes.buttonCancel}
+          color="secondary"
+          onClick={this.handleCancel}
+          fullWidth
+        >
+          {'Cancelar'}
+        </FormButton>
       </form>
           </AppForm>
         </If>

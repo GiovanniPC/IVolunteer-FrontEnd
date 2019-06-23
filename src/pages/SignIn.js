@@ -113,7 +113,7 @@ class SignIn extends React.Component {
                   component={RFTextField}
                   disabled={submitting || sent}
                   fullWidth
-                  label="Username"
+                  label="Nome de usuario"
                   margin="normal"
                   name="username"
                   required
@@ -127,7 +127,7 @@ class SignIn extends React.Component {
                   required
                   name="password"
                   autoComplete="current-password"
-                  label="Password"
+                  label="Senha"
                   type="password"
                   margin="normal"
                 />
@@ -147,7 +147,7 @@ class SignIn extends React.Component {
                   color="secondary"
                   fullWidth
                 >
-                  {submitting || sent ? 'In progress…' : 'Sign In'}
+                  {submitting || sent ? 'In progress…' : 'Entrar'}
                 </FormButton>
               </form>
             )}

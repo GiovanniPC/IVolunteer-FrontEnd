@@ -38,7 +38,16 @@ const styles = theme => ({
   button:{
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
-  }
+  },
+  buttonCancel: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    color:'#ffffff',
+    backgroundColor: '#616161',
+    '&:hover':{
+      backgroundColor:'#000000',
+    }
+  },
 });
 
 class EnventModal extends React.Component {
@@ -56,8 +65,10 @@ class EnventModal extends React.Component {
       ong_id: this.props.ong_id
     }
     try{
-      const response = await api.post(`/orders`, {data});
-      console.log(response)
+      await api.post(`/orders`, {data});
+      this.setState({
+        error: "Solicitação realizada com sucesso."
+      })
     }catch (err) {
       this.setState({
         error: "Você já se voluntáriou para esse evento."
@@ -77,17 +88,17 @@ class EnventModal extends React.Component {
           onClose={this.props.handleClose}
         >
           <AppForm style={getModalStyle()} className={classes.paper}>
+          <Typography variant="h6" className={classes.title} align="center">
+              Responsavel
+            </Typography>
+            <Typography variant="h5" align="center">
+                {ong_name}
+            </Typography>
             <Typography variant="h6" className={classes.title} align="center">
               Título
             </Typography>
             <Typography variant="h5" align="center">
                 {title}
-            </Typography>
-            <Typography variant="h6" className={classes.title} align="center">
-              Responsavel
-            </Typography>
-            <Typography variant="h5" align="center">
-                {ong_name}
             </Typography>
             <Typography variant="h6" className={classes.title} align="center">
               Descrição
@@ -127,7 +138,7 @@ class EnventModal extends React.Component {
               </FormButton>
             </If>
             <FormButton
-              className={classes.button}
+              className={classes.buttonCancel}
               color="secondary"
               fullWidth
               onClick={this.props.handleClose}

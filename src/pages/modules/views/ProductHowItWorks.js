@@ -5,9 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
-import clock from '../../../static/themes/onepirate/productHowItWorks3.svg';
-import suitCase from '../../../static/themes/onepirate/productHowItWorks1.svg';
-import graph from '../../../static/themes/onepirate/productHowItWorks2.svg';
+import clock from '../../../static/icons/contact.svg';
+import suitCase from '../../../static/icons/loupe.svg';
+import graph from '../../../static/icons/list.svg';
 import { isAuthenticated } from '../../../services/auth';
 import If from '../../../utils/if';
 

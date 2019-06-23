@@ -31,6 +31,15 @@ const styles = theme => ({
       color: '#ffff',
     }
   },
+  buttonCancel: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    color:'#ffffff',
+    backgroundColor: '#616161',
+    '&:hover':{
+      backgroundColor:'#000000',
+    }
+  },
   feedback: {
     marginTop: theme.spacing(2),
   },
@@ -38,6 +47,9 @@ const styles = theme => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(1),
   },
+  fields:{
+    backgroundColor: '#fff',
+}
 });
 
 class ProfileVolunteer extends React.Component {
@@ -65,6 +77,7 @@ class ProfileVolunteer extends React.Component {
   handleCancel = () => {
     this.setState({edit: false})
   }
+
   handleUpdate = async e => {
     e.preventDefault();
      const data = this.state.areas
@@ -361,7 +374,7 @@ class ProfileVolunteer extends React.Component {
           {'Atualizar'}
         </FormButton>
         <FormButton
-          className={classes.button}
+          className={classes.buttonCancel}
           color="secondary"
           fullWidth
         >

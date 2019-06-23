@@ -31,6 +31,9 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     outline: 'none',
   },
+  error:{
+    color: theme.palette.error.main
+  },
   title: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
@@ -38,7 +41,19 @@ const styles = theme => ({
   button:{
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
-  }
+  },
+  buttonCancel: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
+    color:'#ffffff',
+    backgroundColor: '#616161',
+    '&:hover':{
+      backgroundColor:'#000000',
+    }
+  },
+  fields:{
+    backgroundColor: '#fff',
+}
 });
 
 class SimpleModal extends React.Component {
@@ -162,7 +177,7 @@ class SimpleModal extends React.Component {
             <Typography variant="h4" gutterBottom marked="center" align="center">
                 Criar evento
               </Typography>
-              <Typography variant="h5" gutterBottom marked="center" align="center">
+              <Typography variant="h5" gutterBottom marked="center" className={classes.error} align="center">
               {this.state.error}
             </Typography>
             <Grid container spacing={2}>
@@ -228,7 +243,7 @@ class SimpleModal extends React.Component {
               {'Criar'}
             </FormButton>
             <FormButton
-              className={classes.button}
+              className={classes.buttonCancel}
               color="secondary"
               fullWidth
               onClick={this.props.handleClose}

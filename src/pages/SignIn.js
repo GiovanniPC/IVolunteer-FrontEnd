@@ -116,7 +116,7 @@ class SignIn extends React.Component {
                   component={RFTextField}
                   disabled={submitting || sent}
                   fullWidth
-                  label="Nome de usuario"
+                  label="Nome de usuário"
                   margin="normal"
                   name="username"
                   required

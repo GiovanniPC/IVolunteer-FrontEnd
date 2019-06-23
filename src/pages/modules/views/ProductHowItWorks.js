@@ -81,7 +81,7 @@ function ProductHowItWorks(props) {
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Consulte nossa listagem de cadastrados, separados por area de atuação
+                  Consulte nossa listagem de cadastrados, separados por área de atuação.
                 </Typography>
               </div>
             </Grid>
@@ -94,7 +94,7 @@ function ProductHowItWorks(props) {
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Verifique qualquer perfil desejavel
+                 Verifique qualquer perfil desejável.
                 </Typography>
               </div>
             </Grid>
@@ -108,7 +108,7 @@ function ProductHowItWorks(props) {
                 />
                 <Typography variant="h5" align="center">
                   {'Entre em contato e comece a contribuir. '}
-                  {'Viva e espalhe essa eperiencia com muito mais!'}
+                  {'Viva e espalhe essa experiencia com muito mais!'}
                 </Typography>
               </div>
             </Grid>

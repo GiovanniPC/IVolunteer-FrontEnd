@@ -53,7 +53,8 @@ class VolunteerSignUp extends React.Component {
     cultura:false,
     dev_defesa_direito:false,
     educacao_pesquisa:false,
-    habitacao:false
+    habitacao:false,
+    disabled: false
   };
 
   handleSignUp = async e => {
@@ -69,6 +70,7 @@ class VolunteerSignUp extends React.Component {
       this.setState({ error: "Selecione pelo menos uma area!" })
     }
    else{
+    this.setState({ disabled: true })
      const data = this.state
      try{
       const res = await api.post(`/signup/volunteer`, {data});
@@ -76,12 +78,13 @@ class VolunteerSignUp extends React.Component {
         this.props.goToSign()
       }
       if(res.status === 202){
-        this.setState({error: res.data.error})
+        this.setState({error: res.data.error, disabled: false})
       }
      }catch (err) {
        console.log(err)
        this.setState({
-         error: "Houve um error com o cadastro, favor verifique suas credenciais."
+         error: "Houve um error com o cadastro, favor verifique suas credenciais.",
+         disabled: false
        })
      }
    }
@@ -103,6 +106,7 @@ class VolunteerSignUp extends React.Component {
             <Grid item xs={12} sm={6}>
                 <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="name"
                 label="Nome Completo"
@@ -116,9 +120,10 @@ class VolunteerSignUp extends React.Component {
             <Grid item xs={12} sm={6}>
             <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="username"
-                label="Nome de usuario"
+                label="Nome de usuário"
                 className={classes.fields}
                 value={this.state.username}
                 onChange={this.handleChange('username')}
@@ -129,6 +134,7 @@ class VolunteerSignUp extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="email"
             label="E-mail"
@@ -141,6 +147,7 @@ class VolunteerSignUp extends React.Component {
         <If teste={!this.props.userData}>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="password"
             label="Senha"
@@ -156,6 +163,7 @@ class VolunteerSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="birth"
             label="Data de nascimento"
@@ -170,6 +178,7 @@ class VolunteerSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="phone"
             label="Telefone"
@@ -183,6 +192,7 @@ class VolunteerSignUp extends React.Component {
         </Grid>
         <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="profissao"
             variant="outlined"
@@ -200,6 +210,7 @@ class VolunteerSignUp extends React.Component {
         </TextField>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="address"
             label="Endereço"
@@ -213,6 +224,7 @@ class VolunteerSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="city"
             label="Cidade"
@@ -226,6 +238,7 @@ class VolunteerSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="state"
             variant="outlined"
@@ -246,36 +259,43 @@ class VolunteerSignUp extends React.Component {
         <FormLabel component="legend">Áreas de interesse</FormLabel>
         <FormGroup>
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.meio_ambiente}
                 onChange={this.handleChangeCheck('meio_ambiente')} />}
             label="Meio Ambiente"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.assistencia_social}
                onChange={this.handleChangeCheck('assistencia_social')} />}
             label="Assistência Social"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.saude}
                onChange={this.handleChangeCheck('saude')} />}
             label="Saude"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.habitacao}
                onChange={this.handleChangeCheck('habitacao')} />}
             label="Habitação"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.dev_defesa_direito}
               onChange={this.handleChangeCheck('dev_defesa_direito')} />}
             label="Desenvolvimento e Defesa dos direitos"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.educacao_pesquisa}
                onChange={this.handleChangeCheck('educacao_pesquisa')} />}
             label="Educação e pesquisa"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.cultura}
                onChange={this.handleChangeCheck('cultura')} />}
             label="Cultura"
@@ -285,6 +305,7 @@ class VolunteerSignUp extends React.Component {
           {this.state.error}
       </Typography>
         <FormButton
+          disabled={this.state.disabled}
           onClick={this.handleSignUp}
           className={classes.button}
           color="secondary"

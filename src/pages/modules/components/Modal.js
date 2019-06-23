@@ -9,6 +9,7 @@ import Modal from '@material-ui/core/Modal';
 import FormButton from '../../modules/form/FormButton';
 import AppForm from '../views/AppForm';
 import If from '../../../utils/if';
+import moment from 'moment';
 import { jobs, areasformat } from '../../../utils/variables';
 
 function getModalStyle() {
@@ -41,13 +42,20 @@ const styles = theme => ({
   button:{
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
+    '&:hover':{
+      color:'#ffffff'
+    }
+  },
+  buttonCancel: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
     color:'#ffffff',
     backgroundColor: '#616161',
     '&:hover':{
       backgroundColor:'#000000',
     }
   },
-  buttonCancel: {
+  buttonProfile: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
     color:'#ffffff',
@@ -68,6 +76,7 @@ class SimpleModal extends React.Component {
     end:new Date(),
     title:'',
     description:'',
+    disabled:false,
   }
 
   handleChange = name => event => {
@@ -80,15 +89,18 @@ class SimpleModal extends React.Component {
     this.setState({ error: "Preencha todos os campos!" })
     }
     else{
+      this.setState({ disabled: true })
       const data = this.state
       try{
         await api.post(`/events`, {data});
         this.props.loadEvents();
         this.props.handleClose();
+        this.setState({ disabled: false })
       }catch (err) {
         console.log(err)
         this.setState({
-          error: "Já existe um evento com este nome."
+          error: "Já existe um evento com este nome.",
+          disabled: false
         })
       }
     }
@@ -160,7 +172,7 @@ class SimpleModal extends React.Component {
               {this.props.areas_conta}
             </If>
             <FormButton
-            className={classes.button}
+            className={classes.buttonProfile}
             color="secondary"
             fullWidth
             onClick={this.props.handleClose}
@@ -189,10 +201,11 @@ class SimpleModal extends React.Component {
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
+                  disabled={this.state.disabled}
                   fullWidth
                   id="start"
                   label="Data de inicio"
-                  type="date"
+                  type="datetime-local"
                   className={classes.fields}
                   value={this.state.start}
                   onChange={this.handleChange('start')}
@@ -203,10 +216,11 @@ class SimpleModal extends React.Component {
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
+                  disabled={this.state.disabled}
                   fullWidth
                   id="end"
                   label="Data de fim"
-                  type="date"
+                  type="datetime-local"
                   className={classes.fields}
                   value={this.state.end}
                   onChange={this.handleChange('end')}
@@ -217,6 +231,7 @@ class SimpleModal extends React.Component {
             </Grid>
               <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="title"
                 label="Titulo"
@@ -228,6 +243,7 @@ class SimpleModal extends React.Component {
               />
               <TextField
                 required
+                disabled={this.state.disabled}
                 id="outlined-dense-multiline"
                 label="Descrição"
                 fullWidth
@@ -240,6 +256,7 @@ class SimpleModal extends React.Component {
                 rowsMax="10"
               />
               <FormButton
+              disabled={this.state.disabled}
               className={classes.button}
               color="secondary"
               fullWidth

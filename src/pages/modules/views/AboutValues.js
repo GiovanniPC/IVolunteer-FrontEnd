@@ -5,8 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import imgGui from '../../../static/images/gui.png';
+import imgJapa from '../../../static/images/japa.jpg';
+import imgGigio from '../../../static/images/gigio.jpg';
 
-const imgGuilherme = 'https://i.pinimg.com/originals/b8/7c/00/b87c0082db822779456c66a519968462.jpg';
 const imgAnonimo = 'https://i.ytimg.com/vi/aIo6dM3DNZA/hqdefault.jpg';
 
 const styles = theme => ({
@@ -59,7 +61,7 @@ function ProductValues(props) {
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <Avatar src={imgGuilherme} className={classes.avatar}/>
+              <Avatar src={imgGui} className={classes.avatar}/>
               <Typography variant="h6" className={classes.title}>
                 Guilherme Dias Fonseca
               </Typography>
@@ -71,26 +73,26 @@ function ProductValues(props) {
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-            <Avatar src={imgAnonimo} className={classes.avatar}/>
+            <Avatar src={imgGigio} className={classes.avatar}/>
               <Typography variant="h6" className={classes.title}>
                 Giovanni Paulo da Cunha
               </Typography>
               <Typography variant="h5">
-                {'Desenvolvedor Backend com Python. Com conhecimento básicos em React, PHP, Oracle SQL, SQL e JavaScript. '}
-                {'Hobbies são jogar videogame, passear com meu cachorro e ler livros. Atualmente me focando em fazer cursos para aprimorar meu conhecimento na área e me desenvolver mais'}
+                {'Desenvolvedor Backend com Python. Com conhecimento básicos em React e JavaScript. '}
+                {'Hobbies são jogar videogame, passear com meu cachorro e ler livros. '}
+                {'Atualmente me focando em fazer cursos para aprimorar meu conhecimento na área e me desenvolver mais'}
               </Typography>
             </div>
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-            <Avatar src={imgAnonimo} className={classes.avatar}/>
+            <Avatar src={imgJapa} className={classes.avatar}/>
               <Typography variant="h6" className={classes.title}>
                 Guilherme Hideki Yuki
               </Typography>
               <Typography variant="h5">
-                {'Engenheiro de software, formado em Eventos e com uma ótima comunicação (pessoal). '}
+                {'Engenheiro de software, formado em Eventos e com uma ótima comunicação pessoal. '}
                 {'Hobbies ficar com os amigos, jogar futebol e ler livros '}
-                {'that you will not find anywhere else.'}
               </Typography>
             </div>
           </Grid>

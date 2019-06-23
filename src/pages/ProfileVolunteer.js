@@ -56,7 +56,9 @@ class ProfileVolunteer extends React.Component {
   state = {
     edit:false,
     data:'',
-    areas:''
+    areas:'',
+    disabled:false,
+    error:'',
   };
 
   handleChange = name => event => {
@@ -70,6 +72,7 @@ class ProfileVolunteer extends React.Component {
     newValue[name] = event.target.checked
     this.setState({ areas: newValue });
   };
+
   editUserData = () => {
     this.setState({edit: true, data: this.props.data, areas: this.props.areas})
   }
@@ -80,18 +83,31 @@ class ProfileVolunteer extends React.Component {
 
   handleUpdate = async e => {
     e.preventDefault();
-     const data = this.state.areas
-     data['volunteer'] = this.state.data
-     try{
-      await api.put(`/my-details`, {data});
-      this.setState({ edit: false })
-     }catch (err) {
-       console.log(err)
-       this.setState({
-         error: "Houve um error com a atualização, favor verifique suas credenciais."
-       })
-     }
-   }
+    const { username, name, email, city, address,phone } = this.state.data;
+    if( !username || !name || !email || !city || !address || !phone ) {
+      this.setState({ error: "Preencha todos os campos!" })
+    }
+    const { saude, meio_ambiente, assistencia_social, 
+      cultura, dev_defesa_direito,educacao_pesquisa, habitacao } = this.state.areas;
+    if( !saude && !meio_ambiente && !assistencia_social && 
+    !cultura && !dev_defesa_direito && !educacao_pesquisa && !habitacao ) {
+      this.setState({ error: "Selecione pelo menos uma area!" })
+    }else{
+      this.setState({ disabled:true })
+      const data = this.state.areas
+      data['volunteer'] = this.state.data
+      try{
+        await api.put(`/my-details`, {data});
+        this.setState({ edit: false, disabled: true })
+      }catch (err) {
+        console.log(err)
+        this.setState({
+          error: "Houve um error com a atualização, favor verifique suas credenciais.",
+          disabled: false
+        })
+      }
+    }
+  }
 
   render() {
     const { classes } = this.props;
@@ -111,7 +127,7 @@ class ProfileVolunteer extends React.Component {
               {this.props.data.name}
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              Nome de usuario
+              Nome de usuário
             </Typography>
             <Typography variant="h5">
               {this.props.data.username}
@@ -199,6 +215,7 @@ class ProfileVolunteer extends React.Component {
             <Grid item xs={12} sm={6}>
                 <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="name"
                 label="Nome Completo"
@@ -212,9 +229,10 @@ class ProfileVolunteer extends React.Component {
             <Grid item xs={12} sm={6}>
             <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="username"
-                label="Nome de usuario"
+                label="Nome de usuário"
                 className={classes.fields}
                 value={this.state.data.username}
                 onChange={this.handleChange('username')}
@@ -225,6 +243,7 @@ class ProfileVolunteer extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="email"
             label="E-mail"
@@ -238,6 +257,7 @@ class ProfileVolunteer extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="birth"
             label="Data de nascimento"
@@ -252,6 +272,7 @@ class ProfileVolunteer extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="phone"
             label="Telefone"
@@ -265,6 +286,7 @@ class ProfileVolunteer extends React.Component {
         </Grid>
         <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="profissao"
             variant="outlined"
@@ -282,6 +304,7 @@ class ProfileVolunteer extends React.Component {
         </TextField>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="address"
             label="Endereço"
@@ -295,6 +318,7 @@ class ProfileVolunteer extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="city"
             label="Cidade"
@@ -308,6 +332,7 @@ class ProfileVolunteer extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="state"
             variant="outlined"
@@ -328,36 +353,43 @@ class ProfileVolunteer extends React.Component {
         <FormLabel component="legend">Áreas de interesse</FormLabel>
         <FormGroup>
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.meio_ambiente}
                 onChange={this.handleChangeCheck('meio_ambiente')} />}
             label="Meio Ambiente"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.assistencia_social}
                onChange={this.handleChangeCheck('assistencia_social')} />}
             label="Assistência Social"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.saude}
                onChange={this.handleChangeCheck('saude')} />}
             label="Saude"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.habitacao}
                onChange={this.handleChangeCheck('habitacao')} />}
             label="Habitação"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.dev_defesa_direito}
               onChange={this.handleChangeCheck('dev_defesa_direito')} />}
             label="Desenvolvimento e Defesa dos direitos"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.educacao_pesquisa}
                onChange={this.handleChangeCheck('educacao_pesquisa')} />}
             label="Educação e pesquisa"
           />
           <FormControlLabel
+            disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.cultura}
                onChange={this.handleChangeCheck('cultura')} />}
             label="Cultura"
@@ -367,6 +399,7 @@ class ProfileVolunteer extends React.Component {
           {this.state.error}
         </Typography>
         <FormButton
+          disabled={this.state.disabled}
           className={classes.button}
           color="secondary"
           fullWidth
@@ -374,6 +407,7 @@ class ProfileVolunteer extends React.Component {
           {'Atualizar'}
         </FormButton>
         <FormButton
+          disabled={this.state.disabled}
           className={classes.buttonCancel}
           color="secondary"
           fullWidth

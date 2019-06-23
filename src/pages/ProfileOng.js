@@ -75,18 +75,18 @@ class ProfileOng extends React.Component {
     if( !username || !name || !cnpj|| !data_abertura || !responsavel ||
       !area_atuacao||  !email || !city || !address || !phone ) {
       this.setState({ error: "Preencha todos os campos!" })
-      console.log('error')
     }     
    else{
+     this.setState({ disabled: true })
      const data = this.state.data
-     console.log(data)
      try{
        await api.put(`/my-details`, {data});
-      this.setState({ edit: false })
+      this.setState({ edit: false, disabled: false })
      }catch (err) {
        console.log(err)
        this.setState({
-         error: "Houve um error com o cadastro, favor verifique suas credenciais."
+         error: "Houve um error com o cadastro, favor verifique suas credenciais.",
+         disabled: false,
        })
      }
    }
@@ -110,7 +110,7 @@ class ProfileOng extends React.Component {
               {this.props.data.name}
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              Nome de usuario
+              Nome de usuário
             </Typography>
             <Typography variant="h5">
               {this.props.data.username}
@@ -215,6 +215,7 @@ class ProfileOng extends React.Component {
             <Grid item xs={12} sm={6}>
                 <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="name"
                 label="Nome Completo"
@@ -228,9 +229,10 @@ class ProfileOng extends React.Component {
             <Grid item xs={12} sm={6}>
             <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="username"
-                label="Nome de usuario"
+                label="Nome de usuário"
                 className={classes.fields}
                 value={ this.state.data.username }
                 onChange={this.handleChange('username')}
@@ -241,6 +243,7 @@ class ProfileOng extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="email"
             label="E-mail"
@@ -254,6 +257,7 @@ class ProfileOng extends React.Component {
           <Grid item xs={12} sm={6}>
             <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="name"
             label="CNPJ"
@@ -267,6 +271,7 @@ class ProfileOng extends React.Component {
         <Grid item xs={12} sm={6}>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="username"
             label="Nome do responsavel"
@@ -282,6 +287,7 @@ class ProfileOng extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="birth"
             label="Data de abertura"
@@ -296,6 +302,7 @@ class ProfileOng extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="state"
             variant="outlined"
@@ -315,6 +322,7 @@ class ProfileOng extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="address"
             label="Endereço"
@@ -328,6 +336,7 @@ class ProfileOng extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="city"
             label="Cidade"
@@ -341,6 +350,7 @@ class ProfileOng extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="state"
             variant="outlined"
@@ -360,6 +370,7 @@ class ProfileOng extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="phone"
             label="Telefone"
@@ -371,6 +382,7 @@ class ProfileOng extends React.Component {
         />
         <TextField
         required
+        disabled={this.state.disabled}
         id="outlined-dense-multiline"
         label="Descrição"
         fullWidth
@@ -382,7 +394,11 @@ class ProfileOng extends React.Component {
         multiline
         rowsMax="10"
       />
+      <Typography variant="h5" align="center" style={{color: '#ec407a'}}>
+          {this.state.error}
+      </Typography>
       <FormButton
+        disabled={this.state.disabled}
         className={classes.button}
         color="secondary"
         fullWidth
@@ -390,6 +406,7 @@ class ProfileOng extends React.Component {
         {'Atualizar'}
       </FormButton>
       <FormButton
+          disabled={this.state.disabled}
           className={classes.buttonCancel}
           color="secondary"
           onClick={this.handleCancel}

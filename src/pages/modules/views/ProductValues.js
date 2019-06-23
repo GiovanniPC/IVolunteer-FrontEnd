@@ -77,7 +77,7 @@ function ProductValues(props) {
               </Typography>
               <Typography variant="h5">
                 {'Você que é ONG pode marcar em nossa agenda todos seus eventos'}
-                {', com isso todos poderam ver e se programar para participar também.'}
+                {', com isso todos poderão ver e se programar para participar também.'}
               </Typography>
             </div>
           </Grid>
@@ -92,7 +92,7 @@ function ProductValues(props) {
                 Veja
               </Typography>
               <Typography variant="h5">
-                {'Acessando a agenda é possível ver todos os eventos que as ONGs estão programando '}
+                {'Acessando a agenda é possível ver todos os eventos que as ONGs estão programando. '}
               </Typography>
             </div>
           </Grid>
@@ -107,7 +107,7 @@ function ProductValues(props) {
                 Voluntariar-se
               </Typography>
               <Typography variant="h5">
-                {'Você voluntário cadastrado além de ver os eventos, pode se voluntariar em qualquer um '}
+                {'Você voluntário cadastrado além de ver os eventos, pode se voluntariar em qualquer um. '}
               </Typography>
             </div>
           </Grid>

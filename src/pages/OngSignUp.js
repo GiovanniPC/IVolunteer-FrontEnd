@@ -46,7 +46,8 @@ class OngSignUp extends React.Component {
     phone:'',
     error:'',
     area_atuacao:'',
-    descricao:''
+    descricao:'',
+    disabled:false,
     };
 
     handleChange = name => event => {
@@ -62,6 +63,7 @@ class OngSignUp extends React.Component {
         this.setState({ error: "Preencha todos os campos!" })
       }     
      else{
+       this.setState({ disabled: true })
        const data = this.state
        try{
         const res = await api.post(`/signup/ong`, {data});
@@ -70,13 +72,13 @@ class OngSignUp extends React.Component {
           this.props.goToSign()
         }
         if(res.status === 202){
-          console.log(res)
-          this.setState({error: res.data.error})
+          this.setState({error: res.data.error, disabled: false})
         }
        }catch (res) {
          console.log(res)
          this.setState({
-           error: "Houve um error com o cadastro, favor verifique suas credenciais."
+           error: "Houve um error com o cadastro, favor verifique suas credenciais.",
+           disabled: false
          })
        }
      }
@@ -88,6 +90,7 @@ class OngSignUp extends React.Component {
         <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
                 <TextField
+                disabled={this.state.disabled}
                 required
                 fullWidth
                 id="name"
@@ -102,9 +105,10 @@ class OngSignUp extends React.Component {
             <Grid item xs={12} sm={6}>
             <TextField
                 required
+                disabled={this.state.disabled}
                 fullWidth
                 id="username"
-                label="Nome de usuario"
+                label="Nome de usuário"
                 className={classes.fields}
                 value={ this.state.username }
                 onChange={this.handleChange('username')}
@@ -115,6 +119,7 @@ class OngSignUp extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="email"
             label="E-mail"
@@ -127,6 +132,7 @@ class OngSignUp extends React.Component {
         <If teste={!this.props.userData}>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="password"
             label="Senha"
@@ -142,6 +148,7 @@ class OngSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
             <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="name"
             label="CNPJ"
@@ -155,6 +162,7 @@ class OngSignUp extends React.Component {
         <Grid item xs={12} sm={6}>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="username"
             label="Nome do responsavel"
@@ -170,6 +178,7 @@ class OngSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="birth"
             label="Data de abertura"
@@ -184,6 +193,7 @@ class OngSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="state"
             variant="outlined"
@@ -203,6 +213,7 @@ class OngSignUp extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="address"
             label="Endereço"
@@ -216,6 +227,7 @@ class OngSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="city"
             label="Cidade"
@@ -229,6 +241,7 @@ class OngSignUp extends React.Component {
           <Grid item xs={12} sm={6}>
           <TextField
             select
+            disabled={this.state.disabled}
             fullWidth
             id="state"
             variant="outlined"
@@ -248,6 +261,7 @@ class OngSignUp extends React.Component {
         </Grid>
         <TextField
             required
+            disabled={this.state.disabled}
             fullWidth
             id="phone"
             label="Telefone"
@@ -259,6 +273,7 @@ class OngSignUp extends React.Component {
         />
         <TextField
         required
+        disabled={this.state.disabled}
         id="outlined-dense-multiline"
         label="Descrição"
         fullWidth
@@ -274,6 +289,7 @@ class OngSignUp extends React.Component {
           {this.state.error}
       </Typography>
       <FormButton
+        disabled={this.state.disabled}
         className={classes.button}
         color="secondary"
         fullWidth

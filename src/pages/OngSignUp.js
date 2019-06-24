@@ -165,7 +165,7 @@ class OngSignUp extends React.Component {
             disabled={this.state.disabled}
             fullWidth
             id="username"
-            label="Nome do responsavel"
+            label="Nome do responsável"
             className={classes.fields}
             value={ this.state.responsavel }
             onChange={this.handleChange('responsavel')}

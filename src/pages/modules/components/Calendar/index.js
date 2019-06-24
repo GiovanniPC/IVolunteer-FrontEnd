@@ -51,9 +51,8 @@ class EventCalendar extends Component {
       const response = await api.get(`/events`);
       const format=[]
       for(const i in response.data){
-        response.data[i].start = new Date(response.data[i].start)
-        response.data[i].end = new Date(response.data[i].end)
-        console.log(moment(response.data[i].end))
+        response.data[i].start = moment(response.data[i].start).add(3, 'hour')._d
+        response.data[i].end = moment(response.data[i].end).add(3, 'hour')._d
         format.push(response.data[i])
       }
       this.setState({events: format})

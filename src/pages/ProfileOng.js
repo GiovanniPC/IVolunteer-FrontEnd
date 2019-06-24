@@ -122,7 +122,7 @@ class ProfileOng extends React.Component {
               {this.props.data.email}
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              Nome do responsavel
+              Nome do responsável
             </Typography>
             <Typography variant="h5">
               {this.props.data.responsavel}
@@ -274,7 +274,7 @@ class ProfileOng extends React.Component {
             disabled={this.state.disabled}
             fullWidth
             id="username"
-            label="Nome do responsavel"
+            label="Nome do responsável"
             className={classes.fields}
             value={ this.state.data.responsavel }
             onChange={this.handleChange('responsavel')}

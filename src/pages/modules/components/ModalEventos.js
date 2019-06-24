@@ -96,7 +96,7 @@ class EnventModal extends React.Component {
         >
           <AppForm style={getModalStyle()} className={classes.paper}>
           <Typography variant="h6" className={classes.title} align="center">
-              Responsavel
+              Responsável
             </Typography>
             <Typography variant="h5" align="center">
                 {ong_name}
@@ -116,10 +116,10 @@ class EnventModal extends React.Component {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
               <Typography variant="h6" className={classes.title} align="center">
-                Data Inicio
+                Data Início
               </Typography>
               <Typography variant="h5" align="center">
-                  {moment(start).format('DD/MM/YYYY')}
+                  {moment(start).add(3, 'hour').format('DD/MM/YYYY h:mm a')}
               </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -127,7 +127,7 @@ class EnventModal extends React.Component {
                 Data Fim
               </Typography>
               <Typography variant="h5" align="center">
-                  {moment(end).format('DD/MM/YYYY')}
+                  {moment(end).add(3, 'hour').format('DD/MM/YYYY h:mm a')}
               </Typography>
               </Grid>
             </Grid>

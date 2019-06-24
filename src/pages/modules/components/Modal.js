@@ -151,7 +151,7 @@ class SimpleModal extends React.Component {
             </If>
             <If teste={!profession}>
             <Typography variant="h6" className={classes.title}>
-              Responsavel
+              Responsável
             </Typography>
             <Typography variant="h5">
                 {responsavel}
@@ -201,6 +201,10 @@ class SimpleModal extends React.Component {
             aria-describedby="simple-modal-description"
             open={this.props.open}
             onClose={this.props.handleClose}
+            style={{
+              overflowY:'auto',
+              maxHeight:'100vh'
+            }}
           >
           <AppForm style={getModalStyle()} className={classes.paper}>
             <Typography variant="h4" gutterBottom marked="center" align="center">
@@ -216,7 +220,7 @@ class SimpleModal extends React.Component {
                   disabled={this.state.disabled}
                   fullWidth
                   id="start"
-                  label="Data de inicio"
+                  label="Data de início"
                   type="datetime-local"
                   className={classes.fields}
                   value={this.state.start}

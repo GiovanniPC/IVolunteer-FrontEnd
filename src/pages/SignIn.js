@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { sendLogin } from '../services/action';
 import { Field, Form, FormSpy } from 'react-final-form';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Typography from './modules/components/Typography';
@@ -88,6 +89,7 @@ class SignIn extends React.Component {
               </Link>
             </Typography>
           </React.Fragment>
+          <div style={{textAlign: 'center'}}>
           <FormControl
           syle={{
             display:'flex',
@@ -96,13 +98,15 @@ class SignIn extends React.Component {
             <Select
               value={this.state.tipo}
               onChange={this.handleChange}
-              style={{marginTop:20}}
+              style={{marginTop:20,  backgroundColor: 'white'}}
+              input={<OutlinedInput labelWidth={''} name="age" id="outlined-age-simple" />}
             >
               <MenuItem value={'ong'} key={'ong'}>ONG</MenuItem>
               <MenuItem value={'volunteer'} key={'vonlunteer'}>Voluntário</MenuItem>
             </Select>
             <FormHelperText>Selecione o tipo de perfil</FormHelperText>
           </FormControl>
+          </div>
           <Form
             onSubmit={this.handleSubmit}
             subscription={{ submitting: true }}

@@ -1,11 +1,11 @@
 export const areasformat = {
-    "saude":"Saude.", 
-    "meio_ambiente":"Meio Ambiente.", 
-    "assistencia_social":"Assistencia Social.", 
-    "cultura":"Cultura.", 
-    "dev_defesa_direito":"Desenvolvimento e Defesa dos Direitos.", 
-    "educacao_pesquisa":"Educação e Pesquisa.", 
-    "habitacao":"Habitação."}
+    "saude":"Saúde", 
+    "meio_ambiente":"Meio Ambiente", 
+    "assistencia_social":"Assistência Social", 
+    "cultura":"Cultura", 
+    "dev_defesa_direito":"Desenvolvimento e Defesa dos Direitos", 
+    "educacao_pesquisa":"Educação e Pesquisa", 
+    "habitacao":"Habitação"}
 
 export const atuacao = [
     "Saude",

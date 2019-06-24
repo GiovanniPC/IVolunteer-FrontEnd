@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import compose from '../utils/compose';
 import If from '../utils/if';
 import OngSignUp from './OngSignUp';
@@ -43,15 +44,18 @@ class SignUp extends React.Component {
               </Link>
             </Typography>
           </React.Fragment>
+          <div style={{textAlign: 'center'}}>
           <FormControl
           syle={{
             display:'flex',
             alignItems: 'center',
+            backgroundColor: 'white',
           }}>
             <Select
               value={this.state.tipo}
               onChange={this.handleChange}
-              style={{marginTop:20}}
+              style={{marginTop:20,  backgroundColor: 'white'}}
+              input={<OutlinedInput labelWidth={''} name="age" id="outlined-age-simple" />}
             >
               <MenuItem value={''} key={''}>Selecione</MenuItem>
               <MenuItem value={'ong'} key={'ong'}>ONG</MenuItem>
@@ -59,6 +63,7 @@ class SignUp extends React.Component {
             </Select>
             <FormHelperText>Selecione o tipo de perfil</FormHelperText>
           </FormControl>
+          </div>
           </If>
           <If teste={this.props.userData}>
           <React.Fragment>

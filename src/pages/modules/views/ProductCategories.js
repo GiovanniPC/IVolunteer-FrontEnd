@@ -5,6 +5,13 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Container from '@material-ui/core/Container';
 import Typography from '../components/Typography';
 import { Link } from 'react-router-dom';
+import saude from '../../../static/images/saude.png';
+import cultura from '../../../static/images/cultura.jpg';
+import assistencia from '../../../static/images/assistencia.jpg';
+import pesquisa from '../../../static/images/pesquisa.jpg';
+import habitacao from '../../../static/images/habitacao.jpg';
+import direito from   '../../../static/images/direito.jpg';
+import meioAmbiente from '../../../static/images/meioAmbiente.jpg';
 
 const styles = theme => ({
   root: {
@@ -89,50 +96,43 @@ function ProductCategories(props) {
 
   const images = [
     {
-      url:
-        'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/meioAmbiente.jpg?alt=media&token=28ae4124-3df2-4aa8-9bb2-0cef4f20ce10',
+      url:meioAmbiente,
       title: 'Meio Ambiente',
       width: '50%',
       name: 'meio-ambiente',
      },
     {
-      url:
-      'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/assistencia.jpg?alt=media&token=1188ac65-603c-4c7a-9fb2-051a7f08e5be',
+      url: assistencia,
       title: 'Assistência social',
       width: '50%',
       name: 'assistencia-social',
     },
     {
-      url:
-        'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/cultura.jpg?alt=media&token=04de9328-49d8-4105-b1d0-c05d20e7ba66',
+      url: cultura,
       title: 'Cultura',
       width: '38%',
       name:'cultura',
     },
     {
-      url:
-        'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/saude.png?alt=media&token=21b44032-f08b-43a6-8c5c-30297a4c1897',
+      url: saude,
       title: 'Saúde',
       width: '38%',
       name:'saude',
     },
     {
-      url:
-        'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/habitacao.jpg?alt=media&token=3d772b00-8134-468a-8501-99da822f6ccb',
+      url: habitacao,
       title: 'Habitação',
       width: '24%',
       name:'habitacao'
     },
     {
-      url:
-        'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/direito.jpg?alt=media&token=92ba00c8-860b-4721-91e7-215c56e1abb7',
+      url: direito,
       title: 'Desenvolvimento e defesa de direitos',
       width: '50%',
       name:'defesa-direito',
     },
     {
-      url:
-        'https://firebasestorage.googleapis.com/v0/b/teste-4d87f.appspot.com/o/pesquisa.jpg?alt=media&token=4bd90e67-b3f4-4a72-b331-bff821f648ea',
+      url: pesquisa,
       title: 'Educação e Pesquisa',
       width: '50%',
       name: 'educacao-pesquisa',

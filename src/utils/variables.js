@@ -1,6 +1,6 @@
 export const areasformat = {
     "saude":"Saúde", 
-    "meio_ambiente":"Meio Ambiente", 
+    "meio-ambiente":"Meio Ambiente", 
     "assistencia_social":"Assistência Social", 
     "cultura":"Cultura", 
     "dev_defesa_direito":"Desenvolvimento e Defesa dos Direitos", 

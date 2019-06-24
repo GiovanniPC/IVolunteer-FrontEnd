@@ -107,7 +107,7 @@ class SimpleModal extends React.Component {
   }
   render() {
     const { classes } = this.props;
-    const { name, email, profession, phone, responsavel, address, area_atuacao } = this.props;
+    const { name, email, profession, phone, responsavel, address, descricao, area_atuacao } = this.props;
     return (
       
       <div>
@@ -117,6 +117,10 @@ class SimpleModal extends React.Component {
           aria-describedby="simple-modal-description"
           open={this.props.open}
           onClose={this.props.handleClose}
+          style={{
+            overflowY:'auto',
+            maxHeight:'100vh'
+          }}
         >
           <AppForm style={getModalStyle()} className={classes.paper}>
             <Typography variant="h6" className={classes.title}>
@@ -165,6 +169,14 @@ class SimpleModal extends React.Component {
             <Typography variant="h5">
                 {address}
             </Typography>
+            <If teste={this.props.area_atuacao}>
+            <Typography variant="h6" className={classes.title}>
+              Descrição
+            </Typography>
+            <Typography variant="body1">
+                {descricao}
+            </Typography>
+            </If>
             <If teste={!this.props.area_atuacao}>
             <Typography variant="h6" className={classes.title}>
               Áreas de interesse

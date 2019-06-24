@@ -8,7 +8,7 @@ export function VehicleTableHeader(props) {
   const areas = {
     'meio-ambiente':'Meio Ambiente',
     'assistencia-social': 'Assistencia Social',
-    'saude': 'Saude',
+    'saude': 'Saúde',
     'habitacao': 'Habitação',
     'cultura': 'Cultura',
     'defesa-direito': 'Defesa e direitos',

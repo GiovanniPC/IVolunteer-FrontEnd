@@ -193,7 +193,7 @@ this.setState({ open: false });
   }
 
   render() {
-    const { name, email, profession_id, responsavel, phone, address, area_atuacao } = this.state.detalhes_conta
+    const { name, email, profession_id, responsavel, phone, address, area_atuacao, descricao } = this.state.detalhes_conta
 
     return (
       <Segment>
@@ -222,6 +222,7 @@ this.setState({ open: false });
           area_atuacao={area_atuacao}
           profession={profession_id}
           responsavel={responsavel}
+          descricao={descricao}
           areas_conta={this.state.list}
           modal='profile'
         />

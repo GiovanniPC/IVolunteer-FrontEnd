@@ -368,7 +368,7 @@ class ProfileVolunteer extends React.Component {
             disabled={this.state.disabled}
             control={<Checkbox checked={this.state.areas.saude}
                onChange={this.handleChangeCheck('saude')} />}
-            label="Saude"
+            label="Saúde"
           />
           <FormControlLabel
             disabled={this.state.disabled}

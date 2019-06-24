@@ -61,35 +61,13 @@ function AppFooter(props) {
       <Container className={classes.container}>
         <Grid container spacing={5}>
           <Grid item xs={6} sm={4} md={3}>
-            <Grid
-              container
-              direction="column"
-              justify="flex-end"
-              className={classes.iconsWrapper}
-              spacing={2}
-            >
-              <Grid item className={classes.icons}>
-                <a href="https://material-ui.com/" className={classes.icon}>
-                  <img src={logoFacebook} alt="Facebook" />
-                </a>
-                <a href="https://twitter.com/MaterialUI" className={classes.icon}>
-                  <img src={logoTwitter} alt="Twitter" />
-                </a>
-              </Grid>
-              <Grid item>© 2019 IVolunteer</Grid>
-            </Grid>
+              <Grid item>© 2019 Eventos Voluntários</Grid>
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
             <Typography variant="h6" marked="left" gutterBottom>
               Legal
             </Typography>
             <ul className={classes.list}>
-              <li className={classes.listItem}>
-                <Link href="/terms/">Termos</Link>
-              </li>
-              <li className={classes.listItem}>
-                <Link href="/privacy/">Privacidade</Link>
-              </li>
               <li className={classes.listItem}>
                 <Link href="/about/">Sobre</Link>
               </li>

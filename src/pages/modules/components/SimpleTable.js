@@ -193,6 +193,7 @@ class CustomizedTables extends Component{
           profession={this.state.detalhes_conta.profession_id}
           responsavel={this.state.detalhes_conta.responsavel}
           areas_conta={this.state.list}
+          descricao={this.state.detalhes_conta.descricao}
           modal='profile'
         />
         </Paper>

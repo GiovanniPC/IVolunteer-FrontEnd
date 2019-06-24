@@ -89,6 +89,10 @@ class EnventModal extends React.Component {
           aria-describedby="simple-modal-description"
           open={this.props.open}
           onClose={this.props.handleClose}
+          style={{
+            overflowY:'auto',
+            maxHeight:'100vh'
+          }}
         >
           <AppForm style={getModalStyle()} className={classes.paper}>
           <Typography variant="h6" className={classes.title} align="center">

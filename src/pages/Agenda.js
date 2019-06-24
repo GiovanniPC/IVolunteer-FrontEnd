@@ -3,7 +3,7 @@ import withRoot from './modules/withRoot';
 import React from 'react';
 import AppFooter from './modules/views/AppFooter';
 import ProductHero from './modules/views/AgendaHero';
-import ProductHowItWorks from './modules/views/ProductHowItWorks';
+import AgendaHowItWorks from './modules/views/AgendaHowItWorks';
 import ProductSmokingHero from './modules/views/ProductSmokingHero';
 import AppAppBar from './modules/views/AppAppBar';
 import EventCalendar from './modules/components/Calendar';
@@ -15,7 +15,7 @@ function Index() {
             <AppAppBar />
             <ProductHero />
             <EventCalendar />
-            <ProductHowItWorks />
+            <AgendaHowItWorks />
             <ProductSmokingHero />
             <AppFooter />
         </React.Fragment>
